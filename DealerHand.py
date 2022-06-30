@@ -86,18 +86,18 @@ def play():
         playerBust = checkBustPlayer()
         if playerBust == 0:
             playerHandValue = str(calcHand(playerHand))
-            print("PLAYER HAS BUSTED:", playerHandValue,"DEALER WINS!!!")
+            print("PLAYER HAS BUSTED:", playerHandValue, "DEALER WINS :(")
             break
         hitStay = input("1. Hit\n2. Stay\n Would you like to hit or stay: ")
 
-
-
-
-    #     bustCheck = checkBust()
-    #     print()
-    # if bustCheck == 0:
-    #     print("Dealer bust at: ", calcHand(dealerHand))
-    # elif bustCheck == 1:
-    #     print("Plaer bust at: ", calcHand(playerHand))
+    if playerBust==1:
+        playerValue = calcHand(playerHand)
+        dealerValue = calcHand(dealerHand)
+        while dealerValue<playerValue:
+            dealCard(dealerHand)
+            dealerValue = calcHand(dealerHand)
+        if checkBustDealer()==0:
+            dealerHandValue = str(calcHand(dealerHand))
+            print("DEALER HAS BUSTED:", dealerHandValue, "PLAYER WINS!!!!")
 
 play()
